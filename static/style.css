@@ -343,6 +343,68 @@ ul li:hover {
   border-radius: 10px;
   transition: width 0.5s ease;
 }
+/* Enhanced Progress Bar Styles */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success), var(--info));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    min-width: 0% !important;
+    max-width: 100% !important;
+}
+
+/* Progress percentage indicators */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+/* Different colors based on progress percentage */
+.progress-fill[style*="width: 0"] {
+    background: #e5e7eb !important; /* Gray for 0% */
+}
+
+.progress-fill[style*="width: 100"] {
+    background: linear-gradient(90deg, #10b981, #059669) !important; /* Green for 100% */
+}
+
+.progress-fill[style*="width: 7"],
+.progress-fill[style*="width: 8"],
+.progress-fill[style*="width: 9"] {
+    background: linear-gradient(90deg, #f59e0b, #d97706) !important; /* Orange for 70-99% */
+}
+
+.progress-fill[style*="width: 5"],
+.progress-fill[style*="width: 6"] {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b) !important; /* Yellow for 50-69% */
+}
+
+.progress-fill[style*="width: 2"],
+.progress-fill[style*="width: 3"],
+.progress-fill[style*="width: 4"] {
+    background: linear-gradient(90deg, #ef4444, #dc2626) !important; /* Red for 20-49% */
+}
+
+.progress-fill[style*="width: 1"] {
+    background: linear-gradient(90deg, #ef4444, #b91c1c) !important; /* Dark red for 1-19% */
+}
 
 /* ================================
    🔍 SEARCH & FILTERS
@@ -1282,4 +1344,5 @@ ul li:hover {
 
 .auth-form .btn {
     min-width: 140px;
+
 }
