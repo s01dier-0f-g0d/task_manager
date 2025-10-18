@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container glass-container hero-section">
+    <h1 class="hero-title">Create and Manage Your Tasks</h1>
+    <p class="hero-subtitle">Streamline your workflow with our intuitive task management system</p>
+    <div class="btn-group">
+        <a href="{% url 'create' %}" class="btn btn-primary">Create New Task</a>
+        <a href="{% url 'display' %}" class="btn btn-secondary">View All Tasks</a>
+    </div>
+</div>
+{% endblock %}

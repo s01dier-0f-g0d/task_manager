@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container glass-container">
+    <form method="GET" class="search-container">
+        <input type="text" name="q" placeholder="Search tasks..." value="{{ request.GET.q }}" class="search-input" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{% url 'create' %}" class="btn btn-primary pulse">Create New Task</a>
+    </div>
+
+    <div class="task-grid">
+        {% for i in data %}
+        <div class="task-card animate-fade-in">
+            <div class="task-header">
+                <h3 class="task-title">{{ i.title }}</h3><br>
+                <span class="task-priority priority-{{ i.priority|lower }}">{{ i.priority }}</span>
+            </div>
+            <p><strong>Progress:</strong> {{ i.progress }}%</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ i.priority|default:0 }}%"></div>
+            </div>
+            <div class="d-flex gap-2 mt-2">
+                <a href="{% url 'specific' i.id %}" class="btn btn-info">View Details</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center">
+            <p>No tasks found. <a href="{% url 'create' %}" class="btn btn-primary">Create your first task!</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

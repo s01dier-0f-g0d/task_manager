@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    <ul>
+        <li>
+            <strong>{{ data.id }}. {{ data.title }}</strong><br>
+            Priority: {{ data.priority }}<br>
+            Description: {{ data.description }}<br>
+            Estimated Time: {{ data.estimated_hours }} hours<br>
+            Progress: {{ data.progress }}%<br>
+
+            <div class="d-flex gap-2 mt-2">
+                <a href="{% url 'update' data.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'delete' data.id %}" class="btn btn-danger">Set as Complete</a>
+                <a href="{% url 'display' %}"><button type="button" class="btn btn-secondary">Back</button></a>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock %}
