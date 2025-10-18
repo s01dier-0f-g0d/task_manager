@@ -53,12 +53,9 @@ A beautiful, modern task management web application built with Django featuring 
 ## 🚀 Installation & Setup
 ### Clone the repository
 git clone https://github.com/s01dier-0f-g0d/task_manager.git
-cd task_manager
 
 ### Create virtual environment
 python -m venv venv
-mac: source venv/bin/activate  
-Windows: venv\Scripts\activate
 
 ### Run migrations
 python manage.py migrate
