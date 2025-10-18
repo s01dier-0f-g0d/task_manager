@@ -15,12 +15,12 @@
         {% for i in data %}
         <div class="task-card animate-fade-in">
             <div class="task-header">
-                <h3 class="task-title">{{ i.title }}</h3><br>
+                <h3 class="task-title">{{ i.title }}</h3>
                 <span class="task-priority priority-{{ i.priority|lower }}">{{ i.priority }}</span>
             </div>
-            <p><strong>Progress:</strong> {{ i.progress }}%</p>
+            <p><strong>Progress:</strong> {{ i.progress|default:0 }}%</p>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: {{ i.priority|default:0 }}%"></div>
+                <div class="progress-fill" style="width: {{ i.progress|default:0 }}%"></div>
             </div>
             <div class="d-flex gap-2 mt-2">
                 <a href="{% url 'specific' i.id %}" class="btn btn-info">View Details</a>
