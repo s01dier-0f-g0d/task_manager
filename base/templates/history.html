@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container glass-container">
+    <form method="GET" class="search-container">
+        <input type="text" name="q" placeholder="Search tasks..." value="{{ request.GET.q }}" class="search-input" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="task-grid">
+        {% for i in data %}
+        <div class="task-card animate-fade-in">
+            <div class="task-header">
+                <h3 class="task-title">{{ i.title }}</h3>
+                <span class="task-priority priority-{{ i.priority|lower }}">{{ i.priority }}</span>
+            </div>
+            <p><strong>Description: <br></strong>{{ i.description }}</p> <br>
+            <p><strong>Completed On:</strong> {{ i.completed_at }}</p>
+            <div class="d-flex gap-2 mt-2">
+                <a href="{% url 'restore' i.id %}" class="btn btn-info">Restore</a>
+            <a href="{% url 'display' %}" class="btn btn-warning">Back</a>
+
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center">
+            <p>No tasks found. <br><br><a href="{% url 'display' %}" class="btn btn-primary">Complete your Tasks first!</a></p> <br>
+            <a href="{% url 'display' %}" class="btn btn-info">Back</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
